@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+:root {
+    --ink: #14213d;
+    --ink-soft: #5b6478;
+    --surface: #ffffff;
+    --line: #d9e0ea;
+    --accent: #0f766e;
+    --accent-dark: #0b5a54;
+    --accent-tint: #e3f4f1;
+    --radius: 16px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    /* Gradient lives on html so it always covers the full page */
+    background: linear-gradient(135deg, #0b1d3a 0%, #134e6f 45%, #0f766e 100%) fixed;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.12) 0, transparent 38%),
+        radial-gradient(circle at 90% 95%, rgba(94, 234, 212, 0.18) 0, transparent 42%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 72px 20px 100px;
+    line-height: 1.5;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+}
+
+.subtitle {
+    margin: 8px 0 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Form card */
+form {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px 28px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow:
+        0 24px 48px rgba(4, 14, 32, 0.35),
+        0 2px 6px rgba(4, 14, 32, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+form br {
+    display: none;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    background: #f5f8fb;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+input[type="text"]::placeholder {
+    color: #94a0b4;
+}
+
+input[type="text"]:hover {
+    border-color: #b7c2d3;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    background: var(--surface);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.18);
+}
+
+/* Search button */
+input[type="button"] {
+    margin-top: 6px;
+    padding: 14px 16px;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #0f766e, #134e6f);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: filter 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+input[type="button"]:hover {
+    filter: brightness(1.12);
+    box-shadow: 0 8px 18px rgba(15, 118, 110, 0.35);
+}
+
+input[type="button"]:active {
+    transform: translateY(1px);
+}
+
+input[type="button"]:focus-visible {
+    outline: 3px solid #5eead4;
+    outline-offset: 3px;
+}
+
+/* Result message (PyScript puts the text in a child div) */
+#result {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 20px;
+}
+
+#result > div {
+    padding: 18px 20px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--ink);
+    background: var(--surface);
+    border-left: 5px solid var(--accent);
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(4, 14, 32, 0.25);
+    animation: reveal 0.25s ease-out;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(4, 14, 32, 0.35);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+    body {
+        padding-top: 48px;
+    }
+
+    form {
+        padding: 24px 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
